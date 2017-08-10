@@ -1,5 +1,13 @@
 {% extends 'base.html' %}
 
+{% block style %}
+<style>
+  img{
+    max-height:300px; width: auto;
+  }
+</style>
+{% endblock %}
+
 {% block button %}
 	{% if not user %}
 	<div class="col-sm-1">
@@ -24,8 +32,11 @@
 </div>
 {% endif %}
 
-<div class="container">
+<!-- Carrusel de Noticias -->
 
+<div class="container">
+  <div class="col-sm-10">
+  <h2>Ultimas Noticias</h2>  
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -37,27 +48,14 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner">
       <div class="item active">
-      	<div class="w3-container w3-center">
-        <a href="{% url 'noticia_view' id=last.pk %}"><img src="{{ last.imagen_encabezado.url }}" alt="{{ last.titulo }}" style="width:50%;"></a>
-        </div>
-        <div class="carousel-caption">
-         <h3>{{ last.titulo }}</h3>
-        </div>
+        <a href="{% url 'noticia_view' id=last.pk %}"><img src="{{ last.imagen_encabezado.url }}" alt="{{ last.titulo }}" style="width:100%;"></a>
       </div>
 
       {% for noticia in noticias %}
       <div class="item">
-      <div class="w3-container w3-center">
-        <a href="{% url 'noticia_view' id=noticia.pk %}"><img src="{{ noticia.imagen_encabezado.url }}" alt="{{ noticia.titulo }}" style="width:50%; ali">
-        </div>
-        <div class="carousel-caption">
-       	<h3>{{ noticia.titulo }}</h3>
-        </div>
+        <a href="{% url 'noticia_view' id=noticia.pk %}"><img src="{{ noticia.imagen_encabezado.url }}" alt="{{ noticia.titulo }}" style="width:100%;"></a>
       </div>
       {% endfor %}
-  
-    </div>
-
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left"></span>
@@ -68,7 +66,18 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+  </div>
 </div>
 
-
+<div class="col-sm-2">
+    <h5>MARCO LOCAL DE CONVIVENCIA ESCOLAR</h5>
+    <ul class="w3-ul">
+    {% load static %}
+      <li><a href="{% static 'noticias/files/marco_local_secundaria_oxford.pdf' %}">Secundaria</a></li>
+      <li><a href="{% static 'noticias/files/marco_local_primaria.pdf' %}">Primaria</a></li>
+      <li><a href="{% static 'noticias/files/marco_local_preescolar.pdf' %}">Preescolar</li>
+    </ul>
+  </div>
+</div>
+<br>
 {% endblock %}
