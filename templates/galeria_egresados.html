@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block cuerpo %}
+
+<div class="container">
+	<h1 align="center">Generacion {{ generacion }}</h1>
+</div>
+{% if alumnos %}
+<div class="w3-row-padding">
+	{% for alumno in alumnos %}
+		<div class="w3-card-2 col-sm-2">
+		{% if alumno.foto.url %}
+	    	<img src="{{ alumno.foto.url }}" alt="{{ alumno.nombre_alumno }}" style="width:100%" onclick="onClick(this)">
+	    {% endif %}
+	    <div class="w3-container">
+	      	<h6><b>{{ alumno.nombre_alumno }}</b></h6>
+	      	<strong>Generacion:</strong><p>{{ alumno.generacion }}</p>
+	      	<p>{{ alumno.mencion_honorifica }}</p>
+	    </div>
+		</div>
+	{% endfor %}
+</div>
+{% endif %}
+
+<div id="modal01" class="w3-modal" onclick="this.style.display='none'">
+  <span class="w3-closebtn w3-hover-red w3-text-white w3-xxlarge w3-container w3-display-topright">&times;</span>
+  <div class="w3-modal-content w3-animate-zoom" style="position:absolute; left:25%; width:50%">
+    <img id="img01" style="width:100%; height:auto;max-height:100%">
+  </div>
+</div>
+
+<script>
+function onClick(element) {
+  document.getElementById("img01").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+}
+</script>
+
+{% endblock %}

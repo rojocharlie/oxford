@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block cuerpo %}
+
+{% if user.is_authenticated %}
+    <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
+    <a href="{% url 'index' %}">Regresar</a>
+{% else %}
+    <p>Bienvenido!. Por Favor Inicia Sesion.</p>
+    <form method="POST" action="">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Login" />
+    </form>
+{% endif %}
+
+{% endblock %}

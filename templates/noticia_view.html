@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block cuerpo %}	
+
+<div class="container">
+	<div class="w3-container w3-center">
+		<h2>{{noticia.titulo}}</h2>
+	</div>
+	<div class="w3-container w3-center">
+		<img src="{{ noticia.imagen_encabezado.url }}" style="max-width: 50%; height: auto;">
+	</div>
+	<br>
+		<p>{{ noticia.texto_principal }}</p>
+	<br>
+		
+		{% if noticia.imagen_secundaria %}
+		<div class="w3-container w3-center">
+			<img src="{{ noticia.imagen_secundaria.url }}" style="max-width: 50%; height: auto;">
+		</div>
+		<br>
+		<p>{{ noticia.texto_secundario }}</p>
+		<br>
+		{% endif %}
+
+		{% if noticia.imagen_terciaria %}
+		<div class="w3-container w3-center">
+			<img src="{{ noticia.imagen_terciaria.url }}" style="max-width: 50%; height: auto;">
+		</div>
+		<br>
+		<p>{{ noticia.texto_terciaria }}</p>
+		<br>
+		{% endif %}
+
+		{% if noticia.imagen_terciaria %}
+		<div class="container">
+			<p>Link: <a href="{{ noticia.link_galeria }}">Galeria</a></p>
+		</div>
+		<br>
+		{% endif %}
+
+		{% if noticia.imagen_terciaria %}
+		<div class="container">
+			<p>Escrito por: {{ noticia.autor }}</p>
+		</div>
+		<br>
+		{% endif %}
+
+
+</div>
+
+{% endblock %}

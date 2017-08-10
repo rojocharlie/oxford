@@ -1,0 +1,41 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Oxford Jr. High School</title>
+	<link rel="shortcut icon" type="image/x-icon" href="{% static 'noticias/img/ico.ico' %}">
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<div class="jumbotron col-sm-11" align="center">
+			{% load static %}
+			<img src="{% static 'noticias/img/logo-secundaria.bmp' %}" alt="Logo" style="width: 13%" align="left" /><h1 align="right">Oxford Jr. High School</h1>
+		</div>
+		{% block button %}
+		{% endblock %}
+	</div>
+	<div class="w3-bar w3-indigo">
+  		<a href="{% url 'index' %}" class="w3-bar-item w3-button">Home</a>
+  		<a href="{% url 'alumnos' %}" class="w3-bar-item w3-button">Alumnos</a>
+  		<a href="{% url 'egresados' %}" class="w3-bar-item w3-button">Egresados</a>
+  		<a href="{% url 'eventos' %}" class="w3-bar-item w3-button">Galeria</a>
+	</div> 
+	{% block cuerpo %}
+	{% endblock %}
+
+	<footer>
+		<div class="container" align="center">
+		<p>Esta pagina esta diseñada para la escuela Oxford Jr. High School Academy</p>
+		<p>Diseño y programacion por Ing. Luis Carlos Narváez Ramos</p>
+		<p>Copyright by Oxford Jr. High School Academy</p>
+		</div>
+	</footer>
+</body>
+</html>

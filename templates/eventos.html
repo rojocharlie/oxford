@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block cuerpo %}
+<ul class="w3-ul w3-border">
+  <li><h2>Eventos:</h2></li>
+  {% for evento in eventos %}
+  <li><a href="{% url 'evento' id=evento.pk %}">{{ evento.titulo }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

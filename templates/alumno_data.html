@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block cuerpo %}
+	<div class="col-sm-1"></div>
+	<div class="col-sm-10 w3-border w3-round-large w3-border-blue">
+	
+	<div class="w3-pale-blue w3-leftbar w3-border-blue">
+	<strong>Datos del Alumno</strong><br>
+	</div>
+	{% if instance.foto %}
+	<strong>Foto: </strong><img src="{{ instance.foto.url }}" class="img-responsive" height="180" width="180" /><br>
+	{% endif %}
+	<strong>Nombre: </strong>{{ instance.nombre}}<br>
+	<strong>Apellido: </strong>{{ instance.apellido}}<br>
+	<strong>Email: </strong>{{ instance.correo}}<br>
+	<strong>Sexo: </strong>{{ instance.sexo_alumno}}<br>
+	<strong>Nacimiento:  </strong>{{ instance.nacimiento}}<br>
+	<strong>Escolaridad: </strong>{{ instance.escolaridad_alum}}<br>
+	<strong>Grado: </strong>{{ instance.grado}}<br>
+	<strong>Direccion: </strong>{{ instance.direccion}}<br>
+	<strong>Colonia: </strong>{{ instance.colonia}}<br>
+	<strong>CP: </strong>{{ instance.cp}}<br>
+	<strong>Telefono: </strong>{{ instance.telefono}}<br>
+	<strong>Celular: </strong>{{ instance.celular}}<br>
+	<strong>Notas: </strong>{{ instance.notas}}<br>
+	<strong>Catecismo: </strong>{{ instance.catecismo}}<br>
+	<strong>Servicio Medico: </strong>{{ instance.serviciomedico}}<br>
+	<strong>Tipo de Sangre: </strong>{{ instance.sangre}}<br>
+	<strong>Alergias: </strong>{{ instance.alergias}}<br>
+	<strong>Enfermedad Cronica: </strong>{{ instance.enfermedadcronica}}<br>	
+	
+	<br>
+	<div class="w3-pale-blue w3-leftbar w3-border-blue">
+	<strong>Datos del Padre</strong><br>
+	</div>
+	<strong>Nombre del Padre: </strong>{{ instance.nombrepadre}}<br>
+	<strong>Email: </strong>{{ instance.correopadre}}<br>
+	<strong>Ocupacion Padre: </strong>{{ instance.ocupacionpadre}}<br>
+	<strong>Trabajo Padre: </strong>{{ instance.trabajopadre}}<br>
+	<strong>Telefono del Padre: </strong>{{ instance.telpadre}}<br>
+	<strong>Celular del Padre: </strong>{{ instance.celpadre}}<br>
+	
+	<br>
+	<div class="w3-pale-blue w3-leftbar w3-border-blue">
+	<strong>Datos de la Madre</strong><br>
+	</div>
+	<strong>Nombre de la Madre: </strong>{{ instance.nombremadre}}<br>
+	<strong>Email: </strong>{{ instance.correomadre}}<br>
+	<strong>Ocupacion de la Madre: </strong>{{ instance.ocupacionmadre}}<br>
+	<strong>Trabajo de la Madre: </strong>{{ instance.trabajomadre}}<br>
+	<strong>Telefono de la Madre: </strong>{{ instance.telmadre}}<br>
+	<strong>Celular de la Madre: </strong>{{ instance.celmadre}}<br>
+	
+	<br>
+	<div class="w3-pale-blue w3-leftbar w3-border-blue">
+	<strong>Persona que autoriza para recoger al hijo</strong><br>
+	</div>
+	<strong>Nombre: </strong>{{ instance.nombreautorizada}}<br>
+	<strong>Parentesco: </strong>{{ instance.parentesco}}<br>
+	<strong>Ocupacion: </strong>{{ instance.ocupacionaut}}<br>
+	<strong>Trabajo: </strong>{{ instance.trabajoaut}}<br>
+	<strong>Telefono: </strong>{{ instance.telaut}}<br>
+	<strong>Celular: </strong>{{ instance.celaut}}<br>
+	</div>
+{% endblock %}

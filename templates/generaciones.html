@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block cuerpo %}
+
+<ul class="w3-ul w3-border">
+  <li><h2>Generaciones:</h2></li>
+  {% for generacion in generaciones %}
+  <li><a href="{% url 'generacion' generacion=generacion.nombre_generacion %}">{{ generacion.nombre_generacion }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

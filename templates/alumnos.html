@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block cuerpo %}
+	
+	<div class="col-sm-1"></div>
+	<div class="container"><b>BUSCAR ALUMNO</b></div>
+	<div class="col-sm-1"></div>
+	<div class="col-sm-3">
+	<form class="form-horizontal" method="GET">
+	    <div class="form-group">
+	      	<div class="input-group">
+	      		<input type="text" class="form-control" placeholder="Nombre o Apellido" name="search">
+	      		<div class="input-group-btn">
+	        		<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+	      		</div>
+	    	</div>
+	    </div>
+	</form>    
+    </div>
+	
+	<div class="col-sm-1">
+	<div class="container">
+	<b>Filtar por:</b>
+	</div>	
+	</div>
+
+	<div class="col-sm-1"></div>
+	<div class="row">
+	<form class="form-horizontal" method="GET">
+		<div class="w3-dropdown-hover">
+		<button value="Secundaria" type="submit" name="filter" class="w3-button w3-indigo">Secundaria</button>
+			<div class="w3-dropdown-content w3-bar-block w3-border">
+  				<button value="Secundaria_1" type="submit" name="filter" class="w3-bar-item w3-button">1</button>
+  				<button value="Secundaria_2" type="submit" name="filter" class="w3-bar-item w3-button">2</button>
+  				<button value="Secundaria_3" type="submit" name="filter" class="w3-bar-item w3-button">3</button>
+			</div>
+		</div>
+		<div class="w3-dropdown-hover">
+		<button value="Primaria" type="submit" name="filter" class="w3-button w3-indigo">Primaria</button>
+			<div class="w3-dropdown-content w3-bar-block w3-border">
+  				<button value="Primaria_1" type="submit" name="filter" class="w3-bar-item w3-button">1</a>
+  				<button value="Primaria_2" type="submit" name="filter" class="w3-bar-item w3-button">2</button>
+  				<button value="Primaria_3" type="submit" name="filter" class="w3-bar-item w3-button">3</button>
+  				<button value="Primaria_4" type="submit" name="filter" class="w3-bar-item w3-button">4</button>
+  				<button value="Primaria_5" type="submit" name="filter" class="w3-bar-item w3-button">5</button>
+  				<button value="Primaria_6" type="submit" name="filter" class="w3-bar-item w3-button">6</button>
+			</div>
+		</div>
+		<div class="w3-dropdown-hover">
+		<button value="Kinder" type="submit" name="filter" class="w3-button w3-indigo">Kinder</button>
+			<div class="w3-dropdown-content w3-bar-block w3-border">
+  				<button value="Kinder_1" type="submit" name="filter" class="w3-bar-item w3-button">1</button>
+  				<button value="Kinder_2" type="submit" name="filter" class="w3-bar-item w3-button">2</button>
+  				<button value="Kinder_3" type="submit" name="filter" class="w3-bar-item w3-button">3</button>
+			</div>
+		</div>
+	</form>
+	</div>
+
+	{% if alumnos %}
+	<div class="col-sm-1">
+	</div>
+	<div class="col-sm-10">
+	<table class="table w3-striped">
+		<thead>
+			<tr class="w3-blue">
+				<th>ID</th>
+				<th>Apellido</th>
+				<th>Nombre</th>
+				<th>Escolaridad</th>
+				<th>Grado</th>
+				{% if usuario %}
+				<th>Inventario</th>
+				{% endif %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for alumno in alumnos %}
+			<tr>
+				<td>{{ alumno.id }}</td>
+ 				<td><a href="{% url 'consulta' id=alumno.pk %}">{{ alumno.apellido }}</a></td>
+				<td>{{ alumno.nombre }}</td>
+				<td>{{ alumno.escolaridad_alum }}</td>
+				<td>{{ alumno.grado }}</td>
+				{% if usuario %}
+				<td><a href="{% url 'inv_update' id=alumno.pk %}"><button class="w3-button w3-indigo">Ver</button></td>
+				{% endif %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	</div>
+	<div class="col-sm-1"> 
+	</div>
+	{% else %}
+			<div class="container" align="center">
+				<strong>Sin Alumnos</strong>
+			</div>
+	{% endif %}
+{% endblock %}
