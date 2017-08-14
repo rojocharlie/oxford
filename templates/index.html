@@ -10,12 +10,12 @@
 
 {% block button %}
 	{% if not user %}
-	<div class="col-sm-1">
-		<a href="{% url 'login' %}"><p><button class="w3-button w3-indigo w3-border w3-medium" >Iniciar Sesion</button></p></a>
+	<div class="col-sm-1 col-xs-2">
+		<a href="{% url 'login' %}"><button class="btn btn-default">Login</button></a>
 	</div>
 	{% else %}
-	<div class="col-sm-1">
-		<a href="{% url 'logout' %}"><p><button class="w3-button w3-indigo w3-border w3-medium" >Cerrar Sesion</button></p></a>
+	<div class="col-sm-1 col-xs-2">
+		<a href="{% url 'logout' %}"><button class="btn btn-default">Logout</button></a>
 	</div>
 	{% endif %}
 {% endblock %}
@@ -23,11 +23,11 @@
 {% block cuerpo %}
 
 {% if user %}
-<div class="container w3-center">
+<div class="container-fluid w3-center">
 	<h2>Bienvenido/a {{ user.first_name }} {{ user.last_name }}</h2>
 </div>
 {% else%}
-<div class="container w3-center">
+<div class="container-fluid w3-center">
 	<h2>Bienvenido/a</h2>
 </div>
 {% endif %}

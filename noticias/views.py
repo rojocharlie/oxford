@@ -25,11 +25,10 @@ def my_view(request):
 	    if user is not None:
 	        login(request, user)
 	        # Redirect to a success page.
-	        return render(request,'index.html', {'Logueado':'Logueado'})
+	        pass
 	    else:
 	        # Return an 'invalid login' error message.
-	        return render(request,'index.html', {})
-
+	        pass
 	return render(request, 'login.html', {'form': PickyAuthenticationForm})
 
 

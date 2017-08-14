@@ -22,13 +22,14 @@ p.inicio::first-letter {
 {% block cuerpo %}	
 
 <div class="container">
-	<div class="w3-container w3-center">
-		<h2>{{noticia.titulo | upper}}</h2>
+	<div class="container w3-center">
+		<img src="{{ noticia.imagen_encabezado.url }}" width="460" height="300">
 	</div>
 
 	<div class="container w3-center">
-		<img src="{{ noticia.imagen_encabezado.url }}" width="460" height="300">
-		</div>
+		<h1>{{noticia.titulo | upper}}<small class="text-right">{{ noticia.fecha_publicacion | date }}</small></h1>
+	</div>
+
 	<br>
 	<div class="newspaper">
 	<p class="inicio">{{ noticia.texto_principal }}</p>
@@ -49,12 +50,12 @@ p.inicio::first-letter {
 	{% endif %}
 	</div>
 
-	{% if noticia.imagen_terciaria %}
+	{% if noticia.link_galeria %}
 	<p>Link: <a href="{{ noticia.link_galeria }}">Galeria</a></p>
 	<br>
 	{% endif %}
 
-	{% if noticia.imagen_terciaria %}
+	{% if noticia.autor %}
 	<p>Escrito por: {{ noticia.autor }}</p>
 	<br>
 	{% endif %}

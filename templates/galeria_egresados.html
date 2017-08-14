@@ -5,24 +5,27 @@
 	<h1 align="center">Generacion {{ generacion }}</h1>
 </div>
 {% if alumnos %}
-<div class="w3-row-padding">
+<div class="row">
 	{% for alumno in alumnos %}
-		<div class="w3-card-2 col-sm-2">
+		<div class="w3-card-2 col-sm-4 col-xs-4">
 		{% if alumno.foto.url %}
-	    	<img src="{{ alumno.foto.url }}" alt="{{ alumno.nombre_alumno }}" style="width:100%" onclick="onClick(this)">
+			<div class="thumbnail">
+	    		<img src="{{ alumno.foto.url }}" alt="{{ alumno.nombre_alumno }}" style="width:100%" onclick="onClick(this)">
+	    	</div>
 	    {% endif %}
-	    <div class="w3-container">
+	    <div class="container">
 	      	<h6><b>{{ alumno.nombre_alumno }}</b></h6>
 	      	<strong>Generacion:</strong><p>{{ alumno.generacion }}</p>
 	      	<p>{{ alumno.mencion_honorifica }}</p>
 	    </div>
 		</div>
+	{% cycle "" "" "</div><div class='row'>" %}
 	{% endfor %}
 </div>
 {% endif %}
 
 <div id="modal01" class="w3-modal" onclick="this.style.display='none'">
-  <span class="w3-closebtn w3-hover-red w3-text-white w3-xxlarge w3-container w3-display-topright">&times;</span>
+  <span class="w3-closebtn w3-hover-blue w3-text-white w3-large w3-container w3-display-topright">&times;</span>
   <div class="w3-modal-content w3-animate-zoom" style="position:absolute; left:25%; width:50%">
     <img id="img01" style="width:100%; height:auto;max-height:100%">
   </div>
