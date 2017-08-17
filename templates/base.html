@@ -10,6 +10,7 @@
   	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> 
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   	{% block style %}
   	{% endblock %}
 </head>
@@ -30,6 +31,7 @@
   		<a href="{% url 'alumnos' %}" class="w3-bar-item w3-button">Alumnos</a>
   		<a href="{% url 'egresados' %}" class="w3-bar-item w3-button">Egresados</a>
   		<a href="{% url 'eventos' %}" class="w3-bar-item w3-button">Galeria</a>
+  		<a href="{% url 'cumples' %}" class="w3-bar-item w3-button">Cumpleaños</a>
 	</div>
 	</div> 
 	{% block cuerpo %}

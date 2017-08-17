@@ -30,6 +30,7 @@ class DatosPersonales(models.Model):
 	nombre = models.CharField(max_length=40) #Nombre del alumno
 	apellido = models.CharField(max_length=30, default='Apellido') #Apellido del alumno
 	correo = models.EmailField(max_length=50, blank=True, null=True) #Correo del alumno
+	correo_escuela = models.EmailField(max_length=50, blank=True, null=True, unique=True)#Correo escolar
 	sexo_alumno = models.ForeignKey(SexoModel, blank=True, null=True)
 	nacimiento = models.DateField() #Fecha de nacimiento del alumno
 	escolaridad_alum = models.ForeignKey(Escolaridad) #Escolaridad

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block cuerpo %}
+<div class="container-fluid">
 	<div class="col-sm-1"></div>
 	<div class="col-sm-10 w3-border w3-round-large w3-border-blue">
 	
@@ -11,7 +12,9 @@
 	{% endif %}
 	<strong>Nombre: </strong>{{ instance.nombre}}<br>
 	<strong>Apellido: </strong>{{ instance.apellido}}<br>
+	<strong>Edad: </strong>{{ edad }}<br>
 	<strong>Email: </strong>{{ instance.correo}}<br>
+	<strong>Email de la Escuela: </strong>{{ instance.correo_escuela}}<br>
 	<strong>Sexo: </strong>{{ instance.sexo_alumno}}<br>
 	<strong>Nacimiento:  </strong>{{ instance.nacimiento}}<br>
 	<strong>Escolaridad: </strong>{{ instance.escolaridad_alum}}<br>
@@ -61,4 +64,5 @@
 	<strong>Telefono: </strong>{{ instance.telaut}}<br>
 	<strong>Celular: </strong>{{ instance.celaut}}<br>
 	</div>
+</div>
 {% endblock %}
