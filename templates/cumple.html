@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block style %}
+<style type="text/css">
+mark {
+    background-color: yellow;
+    color: black;
+}
+</style>
+{% endblock %}
+{% block cuerpo %}
+<div class="container-fluid" style="padding-bottom: 2cm;">
+	<div class="col-sm-3";>
+		<img src="{% static 'cumple/birthday.jpg' %}"  style="max-width:100%; height: auto;">
+	</div>
+	<div class="col-sm-9">
+		<h1>Mes {{ mes|date:"F" }}</h2>
+		<h3>Felicidades!!! a todos de parte de la familia Oxford</h3>
+		<table class="w3-table w3-bordered">
+			<tr>
+				<th>Nombre</th>
+				<th>Escolaridad</th>
+				<th>Dia</th>
+			</tr>
+			{% for alum in instance %}
+			<tr>
+				{% if dia == alum.nacimiento.day %}
+				<td><mark>{{ alum.nombre }} {{ alum.apellido }}</mark></td>
+				<td><mark>{{alum.escolaridad_alum}}</mark></td>
+				<td><mark>{{alum.nacimiento|date:"j"}}</mark></td>
+				{% else %}
+				<td>{{ alum.nombre }} {{ alum.apellido }}</td>
+				<td>{{alum.escolaridad_alum}}</td>
+				<td>{{alum.nacimiento|date:"j"}}</td>
+				{% endif %}
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+</div>
+{% endblock %}
