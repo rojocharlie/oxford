@@ -19,7 +19,10 @@ def consulta(request):
 		if search:
 			query = Q(nombre__icontains=search) | Q(apellido__icontains=search)
 			lista_alumnos = DatosPersonales.objects.filter(query)
-			return render(request, 'alumnos.html', {'alumnos':lista_alumnos})
+			if user_auth.username == 'maestro' or user_auth.username == 'jperez':
+				return render(request, 'alumnos.html', {'alumnos':lista_alumnos, 'usuario':user_auth})
+			else:
+				return render(request, 'alumnos.html', {'alumnos':lista_alumnos})
 		
 		elif filter_alumnos:
 			try:
@@ -27,16 +30,19 @@ def consulta(request):
 				a1 = a[0]
 				a2 = a[1]
 				lista_alumnos = DatosPersonales.objects.filter(escolaridad_alum__escolaridad=a1).filter(grado=a2).order_by('apellido')
-				return render(request, 'alumnos.html', {'alumnos':lista_alumnos})
+				if user_auth.username == 'maestro' or user_auth.username == 'jperez':
+					return render(request, 'alumnos.html', {'alumnos':lista_alumnos, 'usuario':user_auth})
+				else:
+					return render(request, 'alumnos.html', {'alumnos':lista_alumnos})
 			except:	
 				lista_alumnos = DatosPersonales.objects.filter(escolaridad_alum__escolaridad=filter_alumnos).order_by('grado','apellido')
 				return render(request, 'alumnos.html', {'alumnos':lista_alumnos})
 		else:
-			if user_auth.username == 'maestro':
-				lista_alumnos = DatosPersonales.objects.order_by('escolaridad_alum', 'grado','apellido')
+			lista_alumnos = DatosPersonales.objects.order_by('escolaridad_alum', 'grado','apellido')
+			if user_auth.username == 'maestro' or user_auth.username == 'jperez':
 				return render(request, 'alumnos.html', {'alumnos':lista_alumnos, 'usuario':user_auth})
 			else:
-				lista_alumnos = DatosPersonales.objects.order_by('escolaridad_alum', 'grado','apellido')
+				
 				return render(request, 'alumnos.html', {'alumnos':lista_alumnos})
 	
 	else:
