@@ -25,7 +25,7 @@ SECRET_KEY = 'lgyrovk07hxf%y19c(!35ndq9m4ho3ks^=lzkpmzwtsn-mu6@a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.99', 'secundariaoxford.sytes.net']
+ALLOWED_HOSTS = ['127.0.0.1','192.168.1.99', 'secundariaoxford.sytes.net']
 
 
 # Application definition
