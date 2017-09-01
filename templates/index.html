@@ -11,7 +11,7 @@
 {% block button %}
 	{% if not user %}
 	<div class="col-sm-1 col-xs-2">
-		<a href="{% url 'login' %}"><button class="btn btn-default">Login</button></a>
+		<button class="btn btn-default" onclick="document.getElementById('login').style.display='block'">Login</button></a>
 	</div>
 	{% else %}
 	<div class="col-sm-1 col-xs-2">
@@ -81,4 +81,19 @@
   </div>
 </div>
 <br>
+
+<!-- Modal Login access -->
+<div class="w3-modal" id="login">
+  <div class="w3-modal-content w3-card-4 w3-animated-top">
+  <span onclick="document.getElementById('login').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+  <div class="w3-container">
+    <p>Bienvenido!. Por Favor Inicia Sesion.</p>
+    <form method="POST" action="">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Login" />
+    </form>
+  </div>
+  </div>
+</div>
+
 {% endblock %}

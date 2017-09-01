@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block cuerpo %}
+	
+{% for vale in lista %}
+	<ul> 
+	<li>{{ vale.no_folio }} {{ vale.maestro.nombre }} {{ vale.material }} {{ vale.material.cantidad }}</li>
+	</ul>
+{% endfor %}
+{% endblock %}

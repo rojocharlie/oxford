@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'alumnos',
     'egresados',
     'galeria',
+    'inventario',
 ]
 
 MIDDLEWARE = [
