@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'',include('alumnos.urls')),
     url(r'',include('egresados.urls')),
     url(r'',include('galeria.urls')),
+    url(r'',include('inventario.urls')),
     url(r'^cumples/', views.cumple, name='cumples'),
 ]
 
