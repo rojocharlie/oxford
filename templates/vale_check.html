@@ -1,9 +1,31 @@
 {% extends 'base.html' %}
 {% block cuerpo %}
-	
-{% for vale in lista %}
-	<ul> 
-	<li>{{ vale.no_folio }} {{ vale.maestro.nombre }} {{ vale.material }} {{ vale.material.cantidad }}</li>
-	</ul>
-{% endfor %}
+<h2>Lista de Vales:</h2>
+<form action="{% url 'vale_add' %}">
+<button class="w3-btn w3-white w3-border w3-border-blue w3-round-large">Añadir</button>
+</form>
+
+<table class="w3-table w3-striped">
+   <tr>
+	   <th>No Folio</th>
+	   <th>Maestro</th>
+	   <th>Fecha</th>
+	   <th>Material y cantidad</th>
+   </tr>
+			{% for vale in lista %}
+	<tr>
+		<td>{{ vale.no_folio }}</td>
+		<td>{{ vale.maestro.nombre }}</td>
+		<td>{{ vale.fecha_publicacion }}</td>
+		<td>
+			{% for a in vale.material.all %}
+			<ul>
+				<li>{{a.material}} {{a.cantidad}}</li>
+			</ul>
+			{% endfor %}
+		</td>
+	</tr>
+			{% endfor %}
+</table>
+
 {% endblock %}

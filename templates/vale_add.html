@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block cuerpo %}
-	
+<h2>Añadir Vale:</h2>
 <form method="POST"> {% csrf_token %}
 <p>Folio: {{ folio }}
 {{ formulario.as_p }}
