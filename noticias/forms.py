@@ -1,4 +1,6 @@
 from django.contrib.auth.forms import AuthenticationForm
+from .models import Noticia
+from django import forms
 
 class PickyAuthenticationForm(AuthenticationForm):
     def confirm_login_allowed(self, user):
@@ -12,3 +14,8 @@ class PickyAuthenticationForm(AuthenticationForm):
                 _("Sorry, accounts starting with 'b' aren't welcome here."),
                 code='no_b_users',
             )
+
+class NoticiaForm(forms.ModelForm):
+    class Meta:
+        model = Noticia
+        fields = '__all__'

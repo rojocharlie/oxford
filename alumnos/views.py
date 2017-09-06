@@ -1,9 +1,9 @@
-from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
-from alumnos.models import DatosPersonales
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect, redirect
+from .models import DatosPersonales
 from django.core.mail import send_mail
 from django.db.models import Q
 
-from .forms import InventarioForm
+from .forms import InventarioForm, AlumnoForm
 
 import datetime
 
@@ -102,3 +102,23 @@ def cumple(request):
 		'mes':mes_letra, 'instance':instance, 'dia':dia
 	}
 	return render(request, 'cumple.html', context)
+
+def alumno_add(request):
+	form = AlumnoForm()
+	if request.method == 'POST':
+		form = AlumnoForm(request.post)
+		if form.is_valid():
+			instance = form.save(commit=False)
+			instance.save()
+			return redirect('alumnos')
+	return render(request, 'alumno_add.html', {'form':form})
+
+def alumno_edit(request,id):
+	instance = get_object_or_404(DatosPersonales, id=id)
+	formulario = AlumnoForm(request.POST or None, instance=instance)
+	if formulario.is_valid():
+		instance = formulario.save(commit=False)
+		instance.save()
+		return redirect('alumnos')
+
+	return render(request, 'inventario_form.html', {'form': formulario, 'instance': instance})

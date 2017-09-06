@@ -1,5 +1,5 @@
-from django.shortcuts import render, get_object_or_404
-from .forms import PickyAuthenticationForm
+from django.shortcuts import render, get_object_or_404, redirect
+from .forms import PickyAuthenticationForm, NoticiaForm
 from .models import Noticia
 from django.contrib.auth import authenticate, login, logout
 
@@ -30,6 +30,16 @@ def index(request):
 def noticia_view(request, id):
 	instance = get_object_or_404(Noticia, id=id)
 	return render(request, 'noticia_view.html', {'noticia':instance})
+
+def noticia_add(request):
+	form = NoticiaForm()
+	if request.method=='POST':
+		form = NoticiaForm(request.POST)
+		if form.is_valid():
+			f = form.save(commit=False)
+			f.save()
+			return redirect('index')
+	return render(request, 'noticia_form.html', {'form':form})
 
 def logout_view(request):
 	logout(request)

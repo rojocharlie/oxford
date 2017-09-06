@@ -16,3 +16,51 @@ class InventarioForm(forms.ModelForm):
 		'paquete_papel_sanitario',
 		'paquete_toallas_papel', 
 		'caja_pañuelos', )
+
+class AlumnoForm(forms.ModelForm):
+	class Meta:
+		model = DatosPersonales
+		fields = (
+		'nombre',
+		'apellido',
+		'correo',
+		'correo_escuela',
+		'sexo_alumno',
+		'nacimiento',
+		'escolaridad_alum',
+		'grado',
+		'direccion',
+		'colonia',
+		'cp',
+		'telefono',
+		'celular',
+		'foto',
+		'nivel_ingles',
+		'notas',
+		'catecismo',
+		'serviciomedico',
+		'sangre',
+		'alergias',
+		'enfermedadcronica',
+
+		'nombrepadre',
+		'correopadre',
+		'ocupacionpadre',
+		'trabajopadre',
+		'telpadre',
+		'celpadre',
+
+		'nombremadre',
+		'correomadre',
+		'ocupacionmadre',
+		'trabajomadre',
+		'telmadre',
+		'celmadre',
+
+		'nombreautorizada',
+		'parentesco',
+		'ocupacionaut',
+		'trabajoaut',
+		'telaut',
+		'celaut',
+		)

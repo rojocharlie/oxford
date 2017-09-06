@@ -5,6 +5,7 @@ class Noticia(models.Model):
 	titulo = models.CharField(max_length=50)
 	imagen_encabezado = models.ImageField(upload_to='noticias')
 	texto_principal = models.TextField()
+	video = models.FileField(upload_to='videos', blank=True, null=True)
 	imagen_secundaria = models.ImageField(upload_to='noticias', null=True, blank=True)
 	texto_secundario = models.TextField(null=True, blank=True)
 	imagen_terciaria = models.ImageField(upload_to='noticias', null=True, blank=True)

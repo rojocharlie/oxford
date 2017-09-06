@@ -1,12 +1,7 @@
 {% extends 'base.html' %}
 
-{% block style %}
-<style>
-.newspaper {
-    -webkit-column-count: 3; /* Chrome, Safari, Opera */
-    -moz-column-count: 3; /* Firefox */
-    column-count: 3;
-}
+{% block head %}
+
 img{
 	max-width: 100%;
 	height: auto;
@@ -16,7 +11,7 @@ p.inicio::first-letter {
     color: #000000;
     font-size: xx-large;
 }
-</style>
+
 {% endblock %}
 
 {% block cuerpo %}	
@@ -31,12 +26,20 @@ p.inicio::first-letter {
 	</div>
 
 	<br>
-	<div class="newspaper">
+	<div class="container w3-center">
 	<p class="inicio">{{ noticia.texto_principal }}</p>
 	<br>
-	
+	{% if noticia.video %}
+	<video width="400" controls>
+		<source src="{{ noticia.video.url }}" type="video/mp4">
+		<source src="{{ noticia.video.url }}" type="video/mp4">
+		Tu navegador no soporta video
+	</video>
+	<br>
+	{% endif %}
+
 	{% if noticia.imagen_secundaria %}
-	<img src="{{ noticia.imagen_secundaria.url }}" width="250" height="100">
+	<img src="{{ noticia.imagen_secundaria.url }}" width="250" height="100" align="center">
 	<br>
 	<p>{{ noticia.texto_secundario }}</p>
 	<br>
@@ -45,7 +48,7 @@ p.inicio::first-letter {
 	{% if noticia.imagen_terciaria %}
 	<p>{{ noticia.texto_terciaria }}</p>	
 	<br>
-	<img src="{{ noticia.imagen_terciaria.url }}" width="250" height="100">
+	<img src="{{ noticia.imagen_terciaria.url }}" width="250" height="100" align="center">
 	<br>
 	{% endif %}
 	</div>
@@ -63,3 +66,11 @@ p.inicio::first-letter {
 </div>
 
 {% endblock %}
+
+<!--
+style
+.newspaper {
+    -webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+}
